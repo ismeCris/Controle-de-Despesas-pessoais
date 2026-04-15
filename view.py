@@ -27,20 +27,63 @@ def inserir_categoria(i):
 
 
 ## funcoes delete
-with conn:
-    cur = conn.cursor()
-    query = "DELETE FROM categorias WHERE id = ?"
-    cur.execute(query, (id,))
+def deletar_categoria(id):
+    with conn:
+        cur = conn.cursor()
+        query = "DELETE FROM categoria WHERE id = ?"
+        cur.execute(query, (id,))
+def deletar_Receitas(id):
+    with conn:
+        cur = conn.cursor()
+        query = "DELETE FROM Receitas WHERE id = ?"
+        cur.execute(query, (id,))
+        
 
-with conn:
-    cur = conn.cursor()
-    query = "DELETE FROM receitas WHERE id = ?"
-    cur.execute(query, (id,))
+def deletar_gasto(id):
+    with conn:
+        cur = conn.cursor()
+        query = "DELETE FROM Gastos WHERE id = ?"
+        cur.execute(query, (id,))
+       
 
+## ver dados
+def ver_categorias():
 
-with conn:
-    cur = conn.cursor()
-    query = "DELETE FROM Gastos WHERE id = ?"
-    cur.execute(query, (id,))
+    lista_itens = []
+    with conn:
+        cur = conn.cursor()
+        query = "SELECT * FROM categorias"
+        cur.execute(query)
+        rows = cur.fetchall()
+        for row in rows:
+            lista_itens.append(row)
 
+    return lista_itens
 
+## ver dados
+def ver_categorias():
+
+    lista_itens = []
+    with conn:
+        cur = conn.cursor()
+        query = "SELECT * FROM receitas"
+        cur.execute(query)
+        rows = cur.fetchall()
+        for row in rows:
+            lista_itens.append(row)
+
+    return lista_itens
+
+## ver dados
+def ver_categorias():
+
+    lista_itens = []
+    with conn:
+        cur = conn.cursor()
+        query = "SELECT * FROM Gastos"
+        cur.execute(query)
+        rows = cur.fetchall()
+        for row in rows:
+            lista_itens.append(row)
+
+    return lista_itens
