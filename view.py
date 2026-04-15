@@ -24,3 +24,23 @@ def inserir_categoria(i):
         cur = conn.cursor()
         query = "INSERT INTO Gastos (categoria, retirado_em, valor) VALUES (?, ?, ?)"
         cur.execute(query, (i,))
+
+
+## funcoes delete
+with conn:
+    cur = conn.cursor()
+    query = "DELETE FROM categorias WHERE id = ?"
+    cur.execute(query, (id,))
+
+with conn:
+    cur = conn.cursor()
+    query = "DELETE FROM receitas WHERE id = ?"
+    cur.execute(query, (id,))
+
+
+with conn:
+    cur = conn.cursor()
+    query = "DELETE FROM Gastos WHERE id = ?"
+    cur.execute(query, (id,))
+
+
